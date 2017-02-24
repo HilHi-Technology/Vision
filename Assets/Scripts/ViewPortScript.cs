@@ -14,10 +14,14 @@ public class ViewPortScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GameObject headset = GameObject.FindGameObjectWithTag("MainCamera");
-        float distanceToPort = Vector3.Distance(headset.transform.position, ViewPort.transform.position);
-        float fovAngle =  Mathf.Atan((ViewPort.transform.lossyScale.x / 2) / distanceToPort) * Mathf.Rad2Deg * 2;
-        print(Mathf.Atan((ViewPort.transform.lossyScale.x / 2) / distanceToPort) * Mathf.Rad2Deg * 2);
-        GetComponent<Camera>().fieldOfView = fovAngle;
+        float distanceToPort = Vector3.Distance(transform.position, ViewPort.transform.position);
+        print(distanceToPort);
+        Camera camera = GetComponent<Camera>();
+        float fovAngle = Mathf.Atan2(ViewPort.transform.lossyScale.x / 2, distanceToPort) * Mathf.Rad2Deg * 2;
+        print(Mathf.Atan2(ViewPort.transform.lossyScale.x / 2, distanceToPort));
+        print(fovAngle);
+        camera.fieldOfView = fovAngle;
+        camera.nearClipPlane = distanceToPort;
+        transform.parent.LookAt(ViewPort.transform, Vector3.down);
 	}
 }
