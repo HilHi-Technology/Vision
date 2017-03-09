@@ -18,8 +18,8 @@ public class FullVisionScript : MonoBehaviour {
         float radAngle = cam.fieldOfView * Mathf.Deg2Rad;
         float radHFOV = 2 * (float) Math.Atan(Mathf.Tan(radAngle / 2) * cam.aspect);
         float hFOV = Mathf.Rad2Deg * radHFOV;
-        print(vFOV);
-        print(hFOV);
+        //print(vFOV);
+        //print(hFOV);
         Vector3 upperLeft = Quaternion.AngleAxis(-hFOV / 2, transform.up) * Quaternion.AngleAxis(vFOV / 4, transform.right) * camForward;
         Vector3 upperRight = Quaternion.AngleAxis(hFOV / 2, transform.up) * Quaternion.AngleAxis(vFOV / 4, transform.right) * camForward;
         Vector3 lowerLeft = Quaternion.AngleAxis(-hFOV / 2, transform.up) * Quaternion.AngleAxis(-vFOV / 4, transform.right) * camForward;
