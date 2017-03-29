@@ -18,8 +18,6 @@ public class FullVisionScript : MonoBehaviour {
         float radAngle = cam.fieldOfView * Mathf.Deg2Rad;
         float radHFOV = 2 * (float) Math.Atan(Mathf.Tan(radAngle / 2) * cam.aspect);
         float hFOV = Mathf.Rad2Deg * radHFOV;
-        //print(vFOV);
-        //print(hFOV);
         Vector3 upperLeft = Quaternion.AngleAxis(-hFOV / 2, transform.up) * Quaternion.AngleAxis(vFOV / 4, transform.right) * camForward;
         Vector3 upperRight = Quaternion.AngleAxis(hFOV / 2, transform.up) * Quaternion.AngleAxis(vFOV / 4, transform.right) * camForward;
         Vector3 lowerLeft = Quaternion.AngleAxis(-hFOV / 2, transform.up) * Quaternion.AngleAxis(-vFOV / 4, transform.right) * camForward;
@@ -37,7 +35,7 @@ public class FullVisionScript : MonoBehaviour {
             if (Physics.Raycast(transform.position, upperRight, out upperRightHit)) {
                 if (Physics.Raycast(transform.position, lowerLeft, out lowerLeftHit)) {
                     if (Physics.Raycast(transform.position, lowerRight, out lowerRightHit)) {
-                        if (upperLeftHit.transform == upperRightHit.transform == lowerLeftHit.transform == lowerRightHit.transform) {
+                        if (upperLeftHit.transform == upperRightHit.transform && lowerLeftHit.transform == lowerRightHit.transform && upperLeftHit.transform == lowerLeftHit.transform) {
                             upperLeftHit.transform.BroadcastMessage("FullVision");
                         }
                     }
