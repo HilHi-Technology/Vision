@@ -1,4 +1,6 @@
-﻿//========= Copyright 2016, HTC Corporation. All rights reserved. ===========
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//========= Copyright 2016, HTC Corporation. All rights reserved. ===========
 
 Shader "Custom/StereoRenderShader"
 {
@@ -36,7 +38,7 @@ Shader "Custom/StereoRenderShader"
             v2f vert(appdata_full i, out float4 outpos : SV_POSITION)
             {
                 v2f o;
-                outpos = mul(UNITY_MATRIX_MVP, i.vertex);
+                outpos = UnityObjectToClipPos(i.vertex);
 
                 o.uv = i.texcoord.xy;
                 return o;

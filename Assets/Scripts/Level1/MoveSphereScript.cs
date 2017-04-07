@@ -11,12 +11,6 @@ public class MoveSphereScript : MonoBehaviour {
     private float zPos = -1.5f;
     private float vel = 0.025f;
 
-    // Use this for initialization
-    void Start() {
-        rect = new HmdQuad_t();
-        SteamVR_PlayArea.GetBounds(SteamVR_PlayArea.Size.Calibrated, ref rect);
-    }
-
     // Update is called once per frame
     void Update() {
         float absX = rect.vCorners0.v0 * 0.9f;
@@ -32,12 +26,6 @@ public class MoveSphereScript : MonoBehaviour {
         } else {
             vel = 0f;
         }
-        float absZ = rect.vCorners2.v2 * zPos;
-        Vector3 positionVector = new Vector3(absX, transform.localPosition.y, absZ);
-        print(transform.lossyScale.x);
-        print(transform.lossyScale.z);
-        print(rect.vCorners0.v0);
-        print(rect.vCorners2.v2);
-        transform.localPosition = positionVector;
+        LevelPlacementScript.PlaceObjectInLevel(gameObject, new Vector2(0.9f, zPos), new Vector2(0f, 0f));
     }
 }
