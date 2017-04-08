@@ -18,7 +18,7 @@ public class InVision : MonoBehaviour {
     {
         Camera camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         var screenPos = camera.WorldToScreenPoint(obj.transform.position);
-        var distance =  (1.75f * Mathf.Sqrt(Mathf.Pow((camera.pixelWidth / 2) - screenPos.x, 2) + Mathf.Pow((camera.pixelHeight / 2) - screenPos.y, 2))) / (Mathf.Sqrt(Mathf.Pow(camera.pixelWidth, 2) + Mathf.Pow(camera.pixelHeight, 2)) / 2);
+        var distance =  (3.5f * Mathf.Sqrt(Mathf.Pow((camera.pixelWidth / 2) - screenPos.x, 2) + Mathf.Pow((camera.pixelHeight / 2) - screenPos.y, 2))) / (Mathf.Sqrt(Mathf.Pow(camera.pixelWidth, 2) + Mathf.Pow(camera.pixelHeight, 2)) / 2);
         if (distance > 1)
         {
             distance = 0;
