@@ -4,12 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FullVisionScript : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
         Vector3 camForward = transform.forward;
@@ -18,7 +12,7 @@ public class FullVisionScript : MonoBehaviour {
         float radAngle = cam.fieldOfView * Mathf.Deg2Rad;
         float radHFOV = 2 * (float) Math.Atan(Mathf.Tan(radAngle / 2) * cam.aspect);
         float hFOV = Mathf.Rad2Deg * radHFOV;
-        hFOV /= 3.5f;
+        hFOV /= 2.25f;
         vFOV /= 4;
         Vector3 upperLeft = Quaternion.AngleAxis(-hFOV, transform.up) * Quaternion.AngleAxis(vFOV, transform.right) * camForward;
         Vector3 upperRight = Quaternion.AngleAxis(hFOV, transform.up) * Quaternion.AngleAxis(vFOV, transform.right) * camForward;

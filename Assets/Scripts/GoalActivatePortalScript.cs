@@ -6,7 +6,6 @@ public class GoalActivatePortalScript : MonoBehaviour {
 
     public GameObject portalToActivate;
     public GameObject triggerObj;
-    private bool disableExit = false;
 
     private void OnTriggerEnter(Collider other) {
         if (other.name == triggerObj.name)
@@ -17,7 +16,9 @@ public class GoalActivatePortalScript : MonoBehaviour {
     }
 
     private void OnTriggerExit(Collider other) {
-        portalToActivate.SetActive(false);
-        GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0, 0.5f);
+        if (other.name == triggerObj.name) {
+            portalToActivate.SetActive(false);
+            GetComponent<MeshRenderer>().material.color = new Color(1, 0, 0, 0.5f);
+        }
     }
 }

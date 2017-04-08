@@ -14,16 +14,13 @@ public class MoveSphereScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (moving)
-        {
-            float absX = rect.vCorners0.v0 * 0.9f;
-            vel = 0.025f * InVision.DistanceFromCenter(detectionObject);
-            if (zPos > 1.1f) {
-                zPos = -1f;
-            }
-            if (InVision.CanSee(detectionObject)) {
-                zPos += vel;
-            }
+        float absX = rect.vCorners0.v0 * 0.9f;
+        vel = 0.025f * InVision.DistanceFromCenter(detectionObject);
+        if (zPos > 1.1f) {
+            zPos = -1f;
+        }
+        if (InVision.CanSee(detectionObject)) {
+            zPos += vel;
         }
         LevelPlacementScript.PlaceObjectInLevel(gameObject, new Vector2(0.9f, zPos), new Vector2(0f, 0f));
     }
