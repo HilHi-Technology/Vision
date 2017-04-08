@@ -24,10 +24,6 @@ public class LevelPlacementScript : MonoBehaviour {
         float absX = rect.vCorners0.v0 * pos.x;
         float absZ = rect.vCorners2.v2 * pos.y;
         Vector3 positionVector = new Vector3(absX, obj.transform.localPosition.y, absZ);
-        print(obj.transform.lossyScale.x);
-        print(obj.transform.lossyScale.z);
-        print(rect.vCorners0.v0);
-        print(rect.vCorners2.v2);
         obj.transform.localPosition = positionVector;
         if (scale.x != 0)
         {

@@ -7,6 +7,7 @@ public class PortalRevealScript : MonoBehaviour {
 	void Update () {
 		if (!InVision.CanSee(gameObject, GetComponent<MeshCollider>().bounds)) {
             gameObject.GetComponent<MeshRenderer>().enabled = true;
+            gameObject.GetComponent<MeshCollider>().enabled = true;
         }
 	}
 }

@@ -18,10 +18,12 @@ public class FullVisionScript : MonoBehaviour {
         float radAngle = cam.fieldOfView * Mathf.Deg2Rad;
         float radHFOV = 2 * (float) Math.Atan(Mathf.Tan(radAngle / 2) * cam.aspect);
         float hFOV = Mathf.Rad2Deg * radHFOV;
-        Vector3 upperLeft = Quaternion.AngleAxis(-hFOV / 2, transform.up) * Quaternion.AngleAxis(vFOV / 4, transform.right) * camForward;
-        Vector3 upperRight = Quaternion.AngleAxis(hFOV / 2, transform.up) * Quaternion.AngleAxis(vFOV / 4, transform.right) * camForward;
-        Vector3 lowerLeft = Quaternion.AngleAxis(-hFOV / 2, transform.up) * Quaternion.AngleAxis(-vFOV / 4, transform.right) * camForward;
-        Vector3 lowerRight = Quaternion.AngleAxis(hFOV / 2, transform.up) * Quaternion.AngleAxis(-vFOV / 4, transform.right) * camForward;
+        hFOV /= 3.5f;
+        vFOV /= 4;
+        Vector3 upperLeft = Quaternion.AngleAxis(-hFOV, transform.up) * Quaternion.AngleAxis(vFOV, transform.right) * camForward;
+        Vector3 upperRight = Quaternion.AngleAxis(hFOV, transform.up) * Quaternion.AngleAxis(vFOV, transform.right) * camForward;
+        Vector3 lowerLeft = Quaternion.AngleAxis(-hFOV, transform.up) * Quaternion.AngleAxis(-vFOV, transform.right) * camForward;
+        Vector3 lowerRight = Quaternion.AngleAxis(hFOV, transform.up) * Quaternion.AngleAxis(-vFOV, transform.right) * camForward;
         Debug.DrawRay(transform.position, upperLeft, Color.red);
         Debug.DrawRay(transform.position, upperRight, Color.blue);
         Debug.DrawRay(transform.position, lowerLeft, Color.green);

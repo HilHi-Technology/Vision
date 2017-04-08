@@ -570,7 +570,7 @@ namespace HTC.UnityPlugin.StereoRendering
             reflectionMat.m32 = 0.0f;
             reflectionMat.m33 = 1.0f;
         }
-
+#if UNITY_EDITOR
         bool LayerInjection(string layerName)
         {
             SerializedObject tagManager = 
@@ -622,5 +622,6 @@ namespace HTC.UnityPlugin.StereoRendering
 
             return layerExisting;
         }
+#endif
     }
 }
